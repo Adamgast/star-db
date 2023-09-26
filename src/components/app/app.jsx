@@ -4,7 +4,7 @@ import PersonDetails from '../person-details/person-details';
 import RandomPlanet from '../random-planet/random-planet';
 import './app.css';
 
-export function App() {
+function App() {
   return (
     <div>
       <Header />
@@ -20,3 +20,4 @@ export function App() {
     </div>
   );
 }
+export default App;
