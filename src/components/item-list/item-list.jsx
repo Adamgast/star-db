@@ -1,7 +1,6 @@
 import { Component } from 'react';
 import { Spin } from 'antd';
 
-import SwapiService from '../../services/swapi-service';
 import './item-list.css';
 
 class ItemList extends Component {
@@ -10,7 +9,6 @@ class ItemList extends Component {
     this.state = {
       peopleList: null,
     };
-    this.swapiService = new SwapiService();
   }
 
   componentDidMount() {
@@ -18,7 +16,8 @@ class ItemList extends Component {
   }
 
   onLoadedPeople() {
-    this.swapiService.getAllPeople().then((peopleList) => this.setState({ peopleList }));
+    const { getAllPeople } = this.props;
+    getAllPeople().then((peopleList) => this.setState({ peopleList }));
   }
 
   // eslint-disable-next-line class-methods-use-this

@@ -2,7 +2,6 @@
 import React, { Component } from 'react';
 import { Alert, Spin } from 'antd';
 
-import SwapiService from '../../services/swapi-service';
 import './person-details.css';
 
 export default class PersonDetails extends Component {
@@ -13,7 +12,6 @@ export default class PersonDetails extends Component {
       loading: false,
       error: false,
     };
-    this.swapiService = new SwapiService();
   }
 
   componentDidMount() {
@@ -32,12 +30,12 @@ export default class PersonDetails extends Component {
   }
 
   updatePerson() {
-    const { personId } = this.props;
+    const { personId, getPerson } = this.props;
     if (!personId) {
       return;
     }
-    this.swapiService
-      .getPerson(personId)
+
+    getPerson(personId)
       .then((person) => this.setState({ person, loading: false }))
       .catch(() => this.setState({ error: true, loading: false }));
   }

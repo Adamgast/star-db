@@ -14,15 +14,15 @@ export default class SwapiService {
     }
   }
 
-  async getAllPeople() {
+  getAllPeople = async () => {
     const res = await this.getResource('/people/');
     return res.results.map(this.transformPerson);
-  }
+  };
 
-  async getPerson(id) {
+  getPerson = async (id) => {
     const person = await this.getResource(`/people/${id}`);
     return this.transformPerson(person);
-  }
+  };
 
   async getAllPlanets() {
     const res = await this.getResource('/planets/');
